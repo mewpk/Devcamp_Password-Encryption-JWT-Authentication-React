@@ -1,10 +1,7 @@
 const jwt = require('jsonwebtoken');
 
-await function authenticateToken(req, res, next) {
-    const authHeader = req.headers['authorization']
-    const privateKey = 'codecamp_very_$secr3T!';
-    const token = authHeader && authHeader.split(' ')[1]
-
+const authenticateToken = (req, res, next) => {
+    let token = req.headers.authorization;
     if (!token) {
         res.status(401).send('Unauthorized');
     } else {
@@ -16,16 +13,13 @@ await function authenticateToken(req, res, next) {
             );
             console.log(decoded);
             // query user-specific information with decoded as a JSON object
-            res.send([
-                { item: 'Product A selected' },
-                { item: 'Product B selected' },
-            ]);
+             next()
+           
         } catch (e) {
             res.status(401).send('Unauthorized');
         }
     }
 
 
-
-
 }
+module.exports = authenticateToken
