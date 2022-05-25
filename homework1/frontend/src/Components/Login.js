@@ -9,7 +9,7 @@ export default function Login() {
     const navigate = useNavigate()
     const onFinish = async (values) => {
         try {
-            const result = await axios.post('/api/token', {
+            const result = await axios.post('/api/login', {
                 username: values.username,
                 password: values.password,
             });
