@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const authenticateToken = (req, res, next) => {
     let token = req.headers.authorization;
     if (!token) {
-        res.status(401).send('Unauthorized');
+        next()
     } else {
         try {
             // remove 'Bearer' prefix to validate pure token value
