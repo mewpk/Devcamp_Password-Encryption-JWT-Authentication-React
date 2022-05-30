@@ -66,5 +66,15 @@ router.post('/login',async (req, res)=> {
         return;
     }
 });
+router.get("/profile",authenticateToken,(req,res)=>{
+    
+    res.send([
+        { item: 'Product A selected' },
+        { item: 'Product B selected' },
+    ]);
+
+})
+
+
 
 module.exports = router;
